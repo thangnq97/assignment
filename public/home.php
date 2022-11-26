@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./cover.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -24,11 +23,12 @@
             <img class="w-full object-cover mx-auto" src="../img/home_banner.png" alt="">
         </div>
         <!-- main -->
-        <div class="home_main max-w-[1280px] mx-auto">
+        <div class="max-w-[1280px] mx-auto mt-[64px] mb-[96px]">
             <!-- items 1 -->
             <div>
                 <a class="text-center " href="#">
-                    <h2 class="text-black mb-[48px] font-bold text-4xl leading-[43px] hover:text-red-500">Our Products
+                    <h2 class="text-[#3A3A3A] mb-[48px] font-bold text-4xl leading-[43px] hover:text-red-500">Our
+                        Products
                     </h2>
                 </a>
                 <div class="grid grid-cols-4 gap-10">
@@ -82,19 +82,52 @@
                 </div>
             </div>
             <!-- load more -->
-            <div>
-                <input type="submit" value="Show More">
+            <div class="flex items-center justify-center mt-16 mb-[96px]">
+                <input
+                    class="border border-[#F26F21] w-[245px] h-[48px] text-[#F26F21] text-[18px] font-bold cursor-pointer hover:bg-[#F26F21] hover:text-white"
+                    type="submit" value="Show More">
             </div>
             <!-- items 2 -->
             <div>
-                <h2>Tips & Tricks</h2>
-                <div>
+                <a class="flex justify-center" href="#">
+                    <h2 class="text-[#3A3A3A] font-bold text-[36px] leading-[43px] hover:text-red-500 mb-8">Tips &
+                        Tricks
+                    </h2>
+                </a>
+                <div class="grid grid-cols-3 gap-10">
                     <div>
-                        <a href="#">
-                            <img src="../img/home21.png" alt="">
+                        <a class="max-w-[400px]" href="#">
+                            <img class="w-full object-cover" src="../img/home21.png" alt="">
                         </a>
-                        <h3>How to create a living room to love</h3>
-                        <p>20 jan 2020</p>
+                        <a href="#">
+                            <h3 class="mt-8 mb-3 text-[#3A3A3A] font-semibold text-[24px] leading-[28px]">How to create
+                                a living room to love</h3>
+                        </a>
+                        <p class="text-[#898989] text-[14px] font-normal leading-[21px]">20 jan 2020</p>
+                    </div>
+
+                    <div>
+                        <a class="max-w-[400px]" href="#">
+                            <img class="w-full object-cover" src="../img/home22.png" alt="">
+                        </a>
+                        <a href="#">
+                            <h3 class="mt-8 mb-3 text-[#3A3A3A] font-semibold text-[24px] leading-[28px]">Solution for
+                                clean look working
+                                space</h3>
+                        </a>
+                        <p class="text-[#898989] text-[14px] font-normal leading-[21px]">10 jan 2020</p>
+                    </div>
+
+                    <div>
+                        <a class="max-w-[400px]" href="#">
+                            <img class="w-full object-cover" src="../img/home23.png" alt="">
+                        </a>
+                        <a href="#">
+                            <h3 class="mt-8 mb-3 text-[#3A3A3A] font-semibold text-[24px] leading-[28px]">Make your
+                                cooking activity
+                                more fun with good setup</h3>
+                        </a>
+                        <p class="text-[#898989] text-[14px] font-normal leading-[21px]">20 jan 2020</p>
                     </div>
                 </div>
             </div>
