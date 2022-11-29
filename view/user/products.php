@@ -17,7 +17,7 @@
     <!-- conatiner -->
     <div class="max-w-[1920px] mx-auto">
         <!-- header -->
-        <?php require '../header.php';
+        <?php require './header.php';
         echo headerRender();
         ?>
 
@@ -130,7 +130,7 @@
             </div>
         </div>
         <!-- footer -->
-        <?php require '../footer.php';
+        <?php require './footer.php';
         echo footerRender();
         ?>
     </div>
