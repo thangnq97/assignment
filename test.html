@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>The Window Object</h1>
+    <h2>The confirm() Method</h2>
+
+    <p>Click the button to see line-breaks in a confirm box.</p>
+
+    <a href="" id="demo">
+        <button onclick="myFunction()">Try it</button>
+    </a>
+
+    <script>
+        function myFunction() {
+            if (confirm(text) == true) {
+                document.getElementById("demo").href = 'google.com';
+            } else {
+                document.getElementById("demo").href = 'youtube.com';
+            }
+        }
+    </script>
+</body>
+
+</html>

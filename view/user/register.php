@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -14,7 +14,7 @@
     <!-- conatiner -->
     <div class="max-w-[1920px] mx-auto">
         <!-- header -->
-        <?php require './header.php';
+        <?php require '../header.php';
         echo headerRender();
         ?>
 
@@ -23,7 +23,7 @@
             <div class="max-w-[864px] mx-auto mt-[64px] mb-[320px] ml-[320px] flex justify-around gap-[64px]">
                 <div class="flex-[1]">
                     <a href="#">
-                        <img src="../img/login.png" alt="">
+                        <img src="../../img/login.png" alt="">
                     </a>
                 </div>
                 <div class="flex-[1]">

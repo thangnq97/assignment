@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,13 +17,13 @@
     <!-- conatiner -->
     <div class="max-w-[1920px] mx-auto">
         <!-- header -->
-        <?php require './header.php';
+        <?php require '../header.php';
         echo headerRender();
         ?>
 
         <!-- banner -->
         <div>
-            <img class="w-full object-cover mx-auto" src="../img/home_banner.png" alt="">
+            <img class="w-full object-cover mx-auto" src="../../img/home_banner.png" alt="">
         </div>
         <!-- main -->
         <div class="max-w-[1280px] mx-auto mt-[64px] mb-[96px] flex gap-2">
@@ -57,7 +57,7 @@
                 <div class="grid grid-cols-3 gap-x-10 gap-y-8">
                     <div>
                         <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../img/home11.png" alt="">
+                            <img class="w-full object-cover" src="../../img/home11.png" alt="">
                         </a>
                         <a href="#">
                             <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 1</h3>
@@ -69,7 +69,7 @@
 
                     <div>
                         <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../img/home12.png" alt="">
+                            <img class="w-full object-cover" src="../../img/home12.png" alt="">
                         </a>
                         <a href="#">
                             <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 2</h3>
@@ -81,7 +81,7 @@
 
                     <div>
                         <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../img/home13.png" alt="">
+                            <img class="w-full object-cover" src="../../img/home13.png" alt="">
                         </a>
                         <a href="#">
                             <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 3</h3>
@@ -93,7 +93,7 @@
 
                     <div>
                         <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../img/home11.png" alt="">
+                            <img class="w-full object-cover" src="../../img/home11.png" alt="">
                         </a>
                         <a href="#">
                             <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 1</h3>
@@ -105,7 +105,7 @@
 
                     <div>
                         <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../img/home12.png" alt="">
+                            <img class="w-full object-cover" src="../../img/home12.png" alt="">
                         </a>
                         <a href="#">
                             <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 2</h3>
@@ -117,7 +117,7 @@
 
                     <div>
                         <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../img/home13.png" alt="">
+                            <img class="w-full object-cover" src="../../img/home13.png" alt="">
                         </a>
                         <a href="#">
                             <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 3</h3>
@@ -130,7 +130,7 @@
             </div>
         </div>
         <!-- footer -->
-        <?php require './footer.php';
+        <?php require '../footer.php';
         echo footerRender();
         ?>
     </div>

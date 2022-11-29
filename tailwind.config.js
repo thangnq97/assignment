@@ -5,7 +5,7 @@ module.exports = {
         './public/**/*.html',
         './src/**/*.{js,jsx,ts,tsx,vue}',
     ],
-    content: ['./public/**/*.{html,js,php}'],
+    content: ['./view/user/**/*.{html,js,php}'],
     theme: {
         extend: {
             height: {
