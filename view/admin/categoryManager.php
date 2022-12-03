@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products Manager</title>
+    <title>Category Manager</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -50,10 +50,10 @@
             </div>
             <div class="mt-[56px] flex justify-center items-center h-[240px] rounded-2xl"
                 style="background-image: url(../../img/PM_banner.png);">
-                <h2 class="text-white text-[32px] font-bold leading-[40px]">Quản lý sản phẩm</h2>
+                <h2 class="text-white text-[32px] font-bold leading-[40px]">Quản lý danh mục</h2>
             </div>
             <div class="flex justify-between items-center mt-10 mb-5">
-                <h3 class="text-[20px] font-bold leading-[27px]">Danh sách sản phẩm</h3>
+                <h3 class="text-[20px] font-bold leading-[27px]">Danh sách danh mục</h3>
                 <div class="flex gap-4 items-center">
                     <form class="relative" action="">
                         <input
@@ -62,76 +62,48 @@
                         <i class="fa-solid fa-magnifying-glass absolute text-blue-600 top-3 left-[10px] z-10"></i>
                         </input>
                     </form>
-                    <a href="./addNewProduct.php">
+                    <a href="./addNewCategory.php">
                         <button
                             class="rounded text-[14px] font-[400] leading-[19px] bg-[#38A169] text-white h-[40px] w-[130px] hover:opacity-90">Add
                             New
-                            Product</button>
+                            Category</button>
                     </a>
                 </div>
             </div>
+
             <table class="border border-[#5B5B5B] w-full">
                 <thead>
                     <tr>
                         <th
                             class="text-center border py-4 bg-[#4A4A4A] text-white font-semibold text-[12px] border-[#5B5B5B] w-[100px]">
-                            #</th>
+                            id</th>
                         <th
                             class="text-center border py-4 bg-[#4A4A4A] text-white font-semibold text-[12px] border-[#5B5B5B]">
-                            Product Name</th>
+                            CategoryName</th>
+
                         <th
-                            class="text-center border py-4 bg-[#4A4A4A] text-white font-semibold text-[12px] border-[#5B5B5B]">
-                            Product Image</th>
-                        <th
-                            class="text-center border py-4 bg-[#4A4A4A] text-white font-semibold text-[12px] border-[#5B5B5B]">
-                            Product Price</th>
-                        <th
-                            class="text-center border py-4 bg-[#4A4A4A] text-white font-semibold text-[12px] border-[#5B5B5B]">
-                            Product Description</th>
-                        <th
-                            class="text-center border py-4 bg-[#4A4A4A] text-white font-semibold text-[12px] border-[#5B5B5B]">
-                            Category</th>
-                        <th
-                            class="text-center border py-4 bg-[#4A4A4A] text-white font-semibold text-[12px] border-[#5B5B5B]">
+                            class="w-[40%] text-center border py-4 bg-[#4A4A4A] text-white font-semibold text-[12px] border-[#5B5B5B]">
                             Action</th>
                     </tr>
                 </thead>
-
+                <?php require_once "../../model/connect.php";
+                $query = "SELECT * FROM categories";
+                $categories = getAll($query);
+                ?>
                 <tbody>
-                    <?php require_once "../../model/connect.php";
-                    $query = "SELECT * FROM products";
-                    $products = getAll($query);
-                    foreach ($products as $item) :
-                    ?>
+                    <?php foreach ($categories as $item) : ?>
                     <tr>
                         <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B] w-[100px]">
-                            <?php echo $item['id'] ?>
+                            <?php echo $item['categoryId']; ?>
                         </td>
                         <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
-                            <?php echo $item['productName'] ?></td>
-                        <td class="text-center border py-4 text-[14px] font-[400] border-[#5B5B5B]">
-                            <img class="ml-[50%] translate-x-[-50%] w-[100px] h-[100px]"
-                                src="../../img/<?php echo $item['productImage'] ?>" alt="">
-                        </td>
-                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
-                            <?php echo $item['productPrice'] ?></td>
-                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
-                            <?php echo $item['productDesc'] ?>
-                        </td>
-                        <?php
-                            $id = $item['categoryId'];
-                            $query1 = "SELECT * FROM categories WHERE categoryId = $id";
-                            $cate = getOne($query1);
-                            ?>
-                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
-                            <?php echo $cate['categoryName'] ?>
-                        </td>
-                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
-                            <a href="./updateProduct.php?id=<?php echo $item['id'] ?>">
+                            <?php echo $item['categoryName']; ?></td>
+                        <td class="w-[40%] text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <a href="./updateCategory.php?id=<?php echo $item['categoryId'] ?>">
                                 <button
                                     class="text-[14px] text-white font-[400] bg-[#1E74A4] rounded h-[30px] w-[70px] hover:opacity-90">Update</button>
                             </a>
-                            <a href="../../controller/admin/deleteProduct.php?id=<?php echo $item['id'] ?>">
+                            <a href="../../controller/admin/deleteCategory.php?id=<?php echo $item['categoryId'] ?>">
                                 <button
                                     class="text-[14px] text-white font-[400] bg-[#AC3131] rounded h-[30px] w-[70px] hover:opacity-90">Delete</button>
                             </a>

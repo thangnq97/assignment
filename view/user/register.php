@@ -42,6 +42,10 @@
                                 placeholder="tiennh21@gmail.com">
                         </div>
                         <div class="mb-2 flex flex-col gap-[10px]">
+                            <label class="form-label text-[#4A5568] font-normal text-[16px]">Avatar</label>
+                            <input type="file" class="h-[50px] outline-noneplaceholder:text-[#C4C4C4]">
+                        </div>
+                        <div class="mb-2 flex flex-col gap-[10px]">
                             <label class="form-label text-[#4A5568] font-normal text-[16px]">Mật khẩu</label>
                             <input type="password"
                                 class="border border-[#F26F21] rounded w-full h-[50px] outline-none pl-4 placeholder:text-[#C4C4C4]"

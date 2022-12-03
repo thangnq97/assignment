@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Product</title>
+    <title>Products Manager</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
@@ -49,50 +49,34 @@
                 </a>
             </div>
             <div class="max-w-[900px] flex flex-col items-center mt-10">
-                <h2 class="font-bold text-[32px] mb-8">Thêm mới sản phẩm</h2>
-                <form class="w-[80%] flex flex-col gap-8" action="../../controller/admin/addNewProduct.php"
-                    method="POST" enctype="multipart/form-data">
+                <h2 class="font-bold text-[32px] mb-8">Cập nhật danh mục</h2>
+                <?php require_once "../../model/connect.php";
+                $categoryId = $_GET['id'];
+                $query = "SELECT * FROM categories WHERE categoryId = $categoryId";
+                $cate = getOne($query);
+                ?>
+                <form class="w-[80%] flex flex-col gap-8" action="../../controller/admin/updateCategory.php"
+                    method="POST">
                     <div class="flex flex-col gap-2">
-                        <label class="text-[#212529] font-[400] text-[16px]" for="">Tên sản phẩm</label>
-                        <input name="productName"
+                        <label class="text-[#212529] font-[400] text-[16px]" for="">Category Id</label>
+                        <input value="<?php echo $cate['categoryId']; ?>" name="categoryId"
                             class="focus:border-blue-500 w-full rounded border border-[#CED4DA] h-[35px] outline-none pl-3"
-                            type="text" placeholder="Nhập tên sản phẩm">
+                            type="text">
                     </div>
                     <div class="flex flex-col gap-2">
-                        <label class="text-[#212529] font-[400] text-[16px]" for="">Giá sản phẩm</label>
-                        <input name="productPrice"
+                        <label class="text-[#212529] font-[400] text-[16px]" for="">Tên danh mục</label>
+                        <input value="<?php echo $cate['categoryName']; ?>" name="categoryName"
                             class="focus:border-blue-500 w-full rounded border border-[#CED4DA] h-[35px] outline-none pl-3"
-                            type="text" placeholder="Nhập giá sản phẩm">
+                            type="text" placeholder="Nhập tên danh mục">
                     </div>
-                    <div class="flex flex-col gap-2">
-                        <label class="text-[#212529] font-[400] text-[16px]" for="">Ảnh sản phẩm</label>
-                        <input type="file" name="productImage">
-                    </div>
-                    <img src="" alt="">
-                    <div class="flex flex-col gap-2">
-                        <label class="text-[#212529] font-[400] text-[16px]" for="">Mô tả sản phẩm</label>
-                        <textarea name="productDesc"
-                            class="focus:border-blue-500 w-full rounded border border-[#CED4DA] outline-none pl-3 pt-4"
-                            name="" id="" cols="30" rows="5" placeholder="Nhập mô tả sản phẩm ở đây"></textarea>
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <label class="text-[#212529] font-[400] text-[16px]" for="">Danh mục sản phẩm</label>
-                        <select class="focus:border-blue-500 outline-none border border-[#CED4DA] rounded"
-                            name="categoryId" id="">
-                            <?php require_once "../../model/connect.php";
-                            $query = "SELECT * FROM categories";
-                            $categories = getAll($query);
-                            foreach ($categories as $item) :
-                            ?>
-                            <option value="<?php echo $item['categoryId']; ?>"><?php echo $item['categoryName']; ?>
-                            </option>
-                            <?php endforeach ?>
-                        </select>
-                    </div>
+
                     <div class="flex justify-center">
-                        <button name="addProduct"
-                            class="rounded bg-[#38A169] text-[14px] text-white font-[400] w-[120px] h-[40px] hover:opacity-90"
-                            type="submit">Add New Product</button>
+                        <a href="../../controller/admin/updateCategory.php">
+                            <button name="updateCategory"
+                                class="rounded bg-[#1E74A4] text-[14px] text-white font-[400] w-[120px] h-[40px] hover:opacity-90"
+                                type="submit">Update
+                                Category</button>
+                        </a>
                     </div>
                 </form>
             </div>

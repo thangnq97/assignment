@@ -50,39 +50,66 @@
             </div>
             <div class="max-w-[900px] flex flex-col items-center mt-10">
                 <h2 class="font-bold text-[32px] mb-8">Cập nhật sản phẩm</h2>
-                <form class="w-[80%] flex flex-col gap-8" action="">
+                <?php require_once "../../model/connect.php";
+                $id = $_GET['id'];
+                $query = "SELECT * FROM products WHERE id=$id";
+                $product = getOne($query);
+                ?>
+                <form class="w-[80%] flex flex-col gap-8" action="../../controller/admin/updateProduct.php"
+                    method="POST" enctype="multipart/form-data">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#212529] font-[400] text-[16px]" for="">Id</label>
+                        <input value="<?php echo $product['id'] ?>" name="id"
+                            class="focus:border-blue-500 w-full rounded border border-[#CED4DA] h-[35px] outline-none pl-3"
+                            type="text">
+                    </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">Tên sản phẩm</label>
-                        <input
+                        <input value="<?php echo $product['productName'] ?>" name="productName"
                             class="focus:border-blue-500 w-full rounded border border-[#CED4DA] h-[35px] outline-none pl-3"
                             type="text" placeholder="Nhập tên sản phẩm">
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">Giá sản phẩm</label>
-                        <input
+                        <input value="<?php echo $product['productPrice'] ?>" name="productPrice"
                             class="focus:border-blue-500 w-full rounded border border-[#CED4DA] h-[35px] outline-none pl-3"
                             type="text" placeholder="Nhập giá sản phẩm">
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">Ảnh sản phẩm</label>
-                        <input type="file">
+                        <input type="file" name="newImage">
                     </div>
-                    <img src="" alt="">
+                    <div class="flex flex-col gap-2">
+                        <input value="<?php echo $product['productImage'] ?>" name="oldImage"
+                            class="focus:border-blue-500 w-full rounded border border-[#CED4DA] h-[35px] outline-none pl-3 hidden"
+                            type="text">
+                    </div>
+                    <img class="my-2 w-[200px] h-[200px]" src="../../img/<?php echo $product['productImage'] ?>" alt="">
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">Mô tả sản phẩm</label>
-                        <textarea
-                            class="focus:border-blue-500 w-full rounded border border-[#CED4DA] outline-none pl-3 pt-4"
-                            name="" id="" cols="30" rows="5" placeholder="Nhập mô tả sản phẩm ở đây"></textarea>
+                        <textarea name="productDesc"
+                            class="focus:border-blue-500 w-full rounded border border-[#CED4DA] outline-none pl-3 pt-3"
+                            cols="30" rows="5"
+                            placeholder="Nhập mô tả sản phẩm ở đây"><?php echo $product['productDesc'] ?></textarea>
                     </div>
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">Danh mục sản phẩm</label>
-                        <select class="focus:border-blue-500 outline-none border border-[#CED4DA] rounded" name=""
-                            id="">
-                            <option value="Lựa "></option>
+                        <select class="focus:border-blue-500 outline-none border border-[#CED4DA] rounded"
+                            name="categoryId" id="">
+                            <?php
+                            $query = "SELECT * FROM categories";
+                            $categories = getAll($query);
+                            foreach ($categories as $item) :
+                            ?>
+                            <option value="<?php echo $item['categoryId'] ?>" <?php if ($item['categoryId']) : ?>
+                                selected <?php endif ?>>
+                                <?php echo $item['categoryName'] ?>
+                            </option>
+                            <?php endforeach ?>
                         </select>
                     </div>
                     <div class="flex justify-center">
-                        <button
+                        <button name="updateProduct"
                             class="rounded bg-[#1E74A4] text-[14px] text-white font-[400] w-[120px] h-[40px] hover:opacity-90"
                             type="submit">Update
                             Product</button>
