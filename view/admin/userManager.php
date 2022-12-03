@@ -62,10 +62,12 @@
                         <i class="fa-solid fa-magnifying-glass absolute text-blue-600 top-3 left-[10px] z-10"></i>
                         </input>
                     </form>
-                    <button
-                        class="rounded text-[14px] font-[400] leading-[19px] bg-[#38A169] text-white h-[40px] w-[130px] hover:opacity-90">Add
-                        New
-                        User</button>
+                    <a href="./addNewUser.php">
+                        <button
+                            class="rounded text-[14px] font-[400] leading-[19px] bg-[#38A169] text-white h-[40px] w-[130px] hover:opacity-90">Add
+                            New
+                            User</button>
+                    </a>
                 </div>
             </div>
             <table class="border border-[#5B5B5B] w-full">
@@ -92,27 +94,38 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php require_once "../../model/connect.php";
+                    $query = "SELECT * FROM users";
+                    $users = getAll($query);
+                    foreach ($users as $item) :
+                    ?>
                     <tr>
-                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B] w-[100px]">1
-                        </td>
-                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">Product A</td>
-                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">Product Image 1
-                        </td>
-                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">500</td>
-                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">Product Desc 1
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B] w-[100px]">
+                            <?php echo $item['id'] ?>
                         </td>
                         <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
-                            <a href="#">
+                            <?php echo $item['userName'] ?></td>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <img class="w-[100px] h-[100px] ml-[50%] translate-x-[-50%]"
+                                src="../../img/<?php echo $item['avatar'] ?>" alt="">
+                        </td>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <?php echo $item['password'] ?></td>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <?php echo $item['email'] ?>
+                        </td>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <a href="./updateUser.php?id=<?php echo $item['id'] ?>">
                                 <button
                                     class="text-[14px] text-white font-[400] bg-[#1E74A4] rounded h-[30px] w-[70px] hover:opacity-90">Update</button>
                             </a>
-                            <a href="#">
+                            <a href="../../controller/admin/deleteUser.php?id=<?php echo $item['id'] ?>">
                                 <button
                                     class="text-[14px] text-white font-[400] bg-[#AC3131] rounded h-[30px] w-[70px] hover:opacity-90">Delete</button>
                             </a>
                         </td>
                     </tr>
-
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </article>
