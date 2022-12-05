@@ -7,18 +7,18 @@ function headerRender()
             <img src="../../img/logo.png" alt="">
         </a>
         <ul class="flex justify-between items-center gap-8">
-            <li><a class="text-[#5D5D5D] text-[18px] font-semibold hover:text-[#F26F21]" href="#">Trang Chủ</a></li>
-            <li><a class="text-[#5D5D5D] text-[18px] font-semibold hover:text-[#F26F21]" href="#">Sản Phẩm</a></li>
+            <li><a class="text-[#5D5D5D] text-[18px] font-semibold hover:text-[#F26F21]" href="./home.php">Trang Chủ</a></li>
+            <li><a class="text-[#5D5D5D] text-[18px] font-semibold hover:text-[#F26F21]" href="./products.php">Sản Phẩm</a></li>
             <li><a class="text-[#5D5D5D] text-[18px] font-semibold hover:text-[#F26F21]" href="#">Về Chúng Tôi</a></li>
             <li><a class="text-[#5D5D5D] text-[18px] font-semibold hover:text-[#F26F21]" href="#">Liên Hệ</a></li>
         </ul>
         <div class="flex items-center gap-4">
-            <a href="#">
+            <a href="./login.php">
                 <button
                     class="border border-[#0066B2] text-[#0066B2] bg-white px-3 py-1 rounded hover:bg-[#0066B2] hover:text-white">Đăng
                     Nhập</button>
             </a>
-            <a href="#">
+            <a href="./register.php">
                 <button
                     class="border border-[#0066B2] text-[#0066B2] bg-white px-3 py-1 rounded hover:bg-[#0066B2] hover:text-white">Đăng
                     Ký</button>

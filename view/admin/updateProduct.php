@@ -56,7 +56,7 @@
                 $product = getOne($query);
                 ?>
                 <form class="w-[80%] flex flex-col gap-8" action="../../controller/admin/updateProduct.php"
-                    method="POST" enctype="multipart/form-data">
+                    method="POST" enctype="multipart/form-data" onsubmit="return checkUpdate()">
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">Id</label>
                         <input value="<?php echo $product['id'] ?>" name="id"
@@ -119,6 +119,9 @@
 
         </article>
     </div>
+
+
+    <script src="../js/newProduct.js"></script>
 </body>
 
 </html>

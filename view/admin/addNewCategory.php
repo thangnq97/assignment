@@ -50,18 +50,18 @@
             </div>
             <div class="max-w-[900px] flex flex-col items-center mt-10">
                 <h2 class="font-bold text-[32px] mb-8">Thêm mới danh mục</h2>
-                <form class="w-[80%] flex flex-col gap-8" action="../../controller/admin/addNewCategory.php"
-                    method="POST">
+                <form onsubmit="return check()" name="formCategory" class="formCategory w-[80%] flex flex-col gap-8"
+                    action="../../controller/admin/addNewCategory.php" method="POST">
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">Tên danh mục</label>
                         <input name="categoryName"
-                            class="focus:border-blue-500 w-full rounded border border-[#CED4DA] h-[35px] outline-none pl-3"
+                            class="categoryName focus:border-blue-500 w-full rounded border border-[#CED4DA] h-[35px] outline-none pl-3"
                             type="text" placeholder="Nhập tên danh mục">
                     </div>
 
                     <div class="flex justify-center">
                         <button name="newCategory"
-                            class="rounded bg-[#38A169] text-[14px] text-white font-[400] w-[120px] h-[40px] hover:opacity-90"
+                            class=" rounded bg-[#38A169] text-[14px] text-white font-[400] w-[120px] h-[40px] hover:opacity-90"
                             type="submit">Add New Category</button>
                     </div>
                 </form>
@@ -69,6 +69,8 @@
 
         </article>
     </div>
+
+    <script src="../js/newCategory.js"></script>
 </body>
 
 </html>

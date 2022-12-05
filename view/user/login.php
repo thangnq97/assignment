@@ -28,20 +28,20 @@
                 </div>
                 <div class="flex-[1]">
                     <h2 class="text-center text-[#37A9CD] font-bold text-[30px] leading-[36px]">Đăng nhập</h2>
-                    <form class="mt-6 mb-8">
+                    <form class="mt-6 mb-8" method="POST" action="../../controller/user/login.php">
                         <div class="mb-2">
                             <label class="form-label text-[#4A5568] font-normal text-[16px] mb-3">Email</label>
-                            <input type="email"
+                            <input type="email" name="email"
                                 class="border border-[#37A9CD] rounded w-full h-[50px] outline-none pl-4"
                                 placeholder="John.snow@gmail.com">
                         </div>
                         <div class="mb-8">
                             <label class="form-label text-[#4A5568] font-normal text-[16px] mb-3">Mật khẩu</label>
-                            <input type="password"
+                            <input type="password" name="password"
                                 class="border border-[#37A9CD] rounded w-full h-[50px] outline-none pl-4"
                                 placeholder="*********">
                         </div>
-                        <button type="submit"
+                        <button type="submit" name="login"
                             class="w-full h-[50px] bg-[#37A9CD] rounded text-white font-bold text-[16px] hover:bg-[#4fcdf3] mb-4">Đăng
                             nhập
                             ngay</button>

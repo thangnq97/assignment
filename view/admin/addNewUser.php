@@ -51,7 +51,7 @@
             <div class="max-w-[900px] flex flex-col items-center mt-10">
                 <h2 class="font-bold text-[32px] mb-8">Thêm mới user</h2>
                 <form class="w-[80%] flex flex-col gap-8" action="../../controller/admin/addNewUser.php" method="POST"
-                    enctype="multipart/form-data">
+                    enctype="multipart/form-data" onsubmit="return check()">
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">User name</label>
                         <input name="userName"
@@ -84,6 +84,8 @@
 
         </article>
     </div>
+
+    <script src="../js/newUser.js"></script>
 </body>
 
 </html>

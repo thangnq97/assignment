@@ -24,13 +24,15 @@
             <nav>
                 <ul class="flex flex-col gap-4 mt-[52px]">
                     <li><a class="block px-5 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-solid fa-table-columns"></i> Dashboard</a></li>
+                            href="./dashboard.php"><i class="mr-2 fa-solid fa-table-columns"></i> Dashboard</a></li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
                             href="#"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý sản phẩm</a></li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý user</a></li>
+                            href="./userManager.php"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý user</a>
+                    </li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-brands fa-rocketchat"></i> Quản lý danh mục</a></li>
+                            href="./categoryManager.php"><i class="mr-2 fa-brands fa-rocketchat"></i> Quản lý danh
+                            mục</a></li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
                             href="#"><i class="mr-2 fa-regular fa-chart-bar"></i> Thống kê</a></li>
                 </ul>
@@ -75,7 +77,7 @@
                     <tr>
                         <th
                             class="text-center border py-4 bg-[#4A4A4A] text-white font-semibold text-[12px] border-[#5B5B5B] w-[100px]">
-                            #</th>
+                            id</th>
                         <th
                             class="text-center border py-4 bg-[#4A4A4A] text-white font-semibold text-[12px] border-[#5B5B5B]">
                             Product Name</th>
@@ -131,9 +133,10 @@
                                 <button
                                     class="text-[14px] text-white font-[400] bg-[#1E74A4] rounded h-[30px] w-[70px] hover:opacity-90">Update</button>
                             </a>
-                            <a href="../../controller/admin/deleteProduct.php?id=<?php echo $item['id'] ?>">
+                            <a onclick="return confirm('Are you sure?')"
+                                href="../../controller/admin/deleteProduct.php?id=<?php echo $item['id'] ?>">
                                 <button
-                                    class="text-[14px] text-white font-[400] bg-[#AC3131] rounded h-[30px] w-[70px] hover:opacity-90">Delete</button>
+                                    class=" text-[14px] text-white font-[400] bg-[#AC3131] rounded h-[30px] w-[70px] hover:opacity-90">Delete</button>
                             </a>
                         </td>
                     </tr>

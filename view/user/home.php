@@ -32,53 +32,26 @@
                     </h2>
                 </a>
                 <div class="grid grid-cols-4 gap-10">
-                    <div>
-                        <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../../img/home11.png" alt="">
+                    <?php require_once "../../model/connect.php";
+                    $query = "SELECT * FROM products";
+                    $products = getAll($query);
+                    foreach ($products as $item) :
+                    ?>
+                    <div class="mb-16">
+                        <a class="h-full max-h-[310px]" href="#">
+                            <img class="w-full h-full object-cover" src="../../img/<?php echo $item['productImage'] ?>"
+                                alt="">
                         </a>
                         <a href="#">
-                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 1</h3>
+                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">
+                                <?php echo $item['productName'] ?></h3>
                         </a>
-                        <small class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1">description
-                            1</small>
-                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">$100</p>
+                        <small
+                            class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1"><?php echo $item['productDesc'] ?></small>
+                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">
+                            <?php echo '$' . $item['productPrice'] ?></p>
                     </div>
-
-                    <div>
-                        <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../../img/home12.png" alt="">
-                        </a>
-                        <a href="#">
-                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 2</h3>
-                        </a>
-                        <small class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1">description
-                            2</small>
-                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">$200</p>
-                    </div>
-
-                    <div>
-                        <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../../img/home13.png" alt="">
-                        </a>
-                        <a href="#">
-                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 3</h3>
-                        </a>
-                        <small class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1">description
-                            3</small>
-                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">$300</p>
-                    </div>
-
-                    <div>
-                        <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../../img/home14.png" alt="">
-                        </a>
-                        <a href="#">
-                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 4</h3>
-                        </a>
-                        <small class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1">description
-                            4</small>
-                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">$400</p>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
             <!-- load more -->

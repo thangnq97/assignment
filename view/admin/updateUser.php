@@ -56,7 +56,7 @@
                 $user = getOne($query);
                 ?>
                 <form class="w-[80%] flex flex-col gap-8" action="../../controller/admin/updateUser.php" method="POST"
-                    enctype="multipart/form-data">
+                    enctype="multipart/form-data" onsubmit="return checkUpdate()">
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">Id</label>
                         <input value="<?php echo $user['id'] ?>" name="id"
@@ -103,6 +103,8 @@
 
     </article>
     </div>
+
+    <script src="../js/newUser.js"></script>
 </body>
 
 </html>

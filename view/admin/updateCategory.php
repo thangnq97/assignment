@@ -56,7 +56,7 @@
                 $cate = getOne($query);
                 ?>
                 <form class="w-[80%] flex flex-col gap-8" action="../../controller/admin/updateCategory.php"
-                    method="POST">
+                    method="POST" onsubmit="return check()">
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">Category Id</label>
                         <input value="<?php echo $cate['categoryId']; ?>" name="categoryId"
@@ -66,7 +66,7 @@
                     <div class="flex flex-col gap-2">
                         <label class="text-[#212529] font-[400] text-[16px]" for="">Tên danh mục</label>
                         <input value="<?php echo $cate['categoryName']; ?>" name="categoryName"
-                            class="focus:border-blue-500 w-full rounded border border-[#CED4DA] h-[35px] outline-none pl-3"
+                            class="focus:border-blue-500 w-full rounded border border-[#CED4DA] h-[35px] outline-none pl-3 categoryName"
                             type="text" placeholder="Nhập tên danh mục">
                     </div>
 
@@ -83,6 +83,9 @@
 
         </article>
     </div>
+
+
+    <script src="../js/newCategory.js"></script>
 </body>
 
 </html>

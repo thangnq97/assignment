@@ -26,11 +26,14 @@
                     <li><a class="block px-5 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
                             href="#"><i class="mr-2 fa-solid fa-table-columns"></i> Dashboard</a></li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý sản phẩm</a></li>
+                            href="./productManager.php"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý sản
+                            phẩm</a></li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý user</a></li>
+                            href="./userManager.php"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý user</a>
+                    </li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-brands fa-rocketchat"></i> Quản lý danh mục</a></li>
+                            href="./categoryManager.php"><i class="mr-2 fa-brands fa-rocketchat"></i> Quản lý danh
+                            mục</a></li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
                             href="#"><i class="mr-2 fa-regular fa-chart-bar"></i> Thống kê</a></li>
                 </ul>

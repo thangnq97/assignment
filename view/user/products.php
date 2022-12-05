@@ -31,14 +31,16 @@
             <div class="flex-[1]">
                 <h2 class="font-semibold text-[24px] leading-[36px] mb-[32px]">Danh mục</h2>
                 <ul class="flex flex-col">
+                    <?php require_once "../../model/connect.php";
+                    $query = "SELECT * FROM categories";
+                    $categories = getAll($query);
+                    foreach ($categories as $item) :
+                    ?>
                     <li><a class="block font-semibold text-[16px] py-3 pl-1 rounded leading-[19px] hover:bg-[#F26F21] hover:text-white"
-                            href="#">Danh mục 1</a></li>
-                    <li><a class="block font-semibold text-[16px] py-3 pl-1 rounded leading-[19px] hover:bg-[#F26F21] hover:text-white"
-                            href="#">Danh mục 2</a></li>
-                    <li><a class="block font-semibold text-[16px] py-3 pl-1 rounded leading-[19px] hover:bg-[#F26F21] hover:text-white"
-                            href="#">Danh mục 3</a></li>
-                    <li><a class="block font-semibold text-[16px] py-3 pl-1 rounded leading-[19px] hover:bg-[#F26F21] hover:text-white"
-                            href="#">Danh mục 4</a></li>
+                            href="#"><?php echo $item['categoryName']; ?></a>
+                    </li>
+                    <?php endforeach ?>
+
                 </ul>
             </div>
             <!-- content -->
@@ -55,77 +57,27 @@
                 </div>
                 <!-- items -->
                 <div class="grid grid-cols-3 gap-x-10 gap-y-8">
-                    <div>
-                        <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../../img/home11.png" alt="">
-                        </a>
-                        <a href="#">
-                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 1</h3>
-                        </a>
-                        <small class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1">description
-                            1</small>
-                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">$100</p>
-                    </div>
+                    <?php
+                    $query1 = "SELECT * FROM products";
+                    $products = getAll($query1);
 
+                    foreach ($products as $item) :
+                    ?>
                     <div>
-                        <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../../img/home12.png" alt="">
+                        <a class="max-h-[310px]" href="./productDetail.php?id=<?php echo $item['id'] ?>">
+                            <img class="w-[400px] h-[300px] object-cover "
+                                src="../../img/<?php echo $item['productImage'] ?>" alt="">
                         </a>
-                        <a href="#">
-                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 2</h3>
+                        <a href="./productDetail.php?id=<?php echo $item['id'] ?>">
+                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">
+                                <?php echo $item['productName'] ?></h3>
                         </a>
-                        <small class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1">description
-                            2</small>
-                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">$200</p>
+                        <small
+                            class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1"><?php echo $item['productDesc'] ?></small>
+                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">
+                            <?php echo '$' . $item['productPrice'] ?></p>
                     </div>
-
-                    <div>
-                        <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../../img/home13.png" alt="">
-                        </a>
-                        <a href="#">
-                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 3</h3>
-                        </a>
-                        <small class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1">description
-                            3</small>
-                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">$300</p>
-                    </div>
-
-                    <div>
-                        <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../../img/home11.png" alt="">
-                        </a>
-                        <a href="#">
-                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 1</h3>
-                        </a>
-                        <small class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1">description
-                            1</small>
-                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">$100</p>
-                    </div>
-
-                    <div>
-                        <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../../img/home12.png" alt="">
-                        </a>
-                        <a href="#">
-                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 2</h3>
-                        </a>
-                        <small class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1">description
-                            2</small>
-                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">$200</p>
-                    </div>
-
-                    <div>
-                        <a class="max-h-[310px]" href="#">
-                            <img class="w-full object-cover" src="../../img/home13.png" alt="">
-                        </a>
-                        <a href="#">
-                            <h3 class="text-black text-[24px] font-bold leading-[28px] mt-3 mb-2">Product 3</h3>
-                        </a>
-                        <small class="text-[#898989] font-normal text-[18px] leading-[27px] mb-1">description
-                            3</small>
-                        <p class="text-[#F54748] font-normal text-[20px] leading-[30px]">$300</p>
-                    </div>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
