@@ -9,19 +9,17 @@ foreach ($users as $item) {
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             if ($_POST['email'] == $item['email'] && $_POST['password'] == $item['password']) {
                 if ($_POST['email'] == 'thangnqph28950@fpt.edu.vn' && $_POST['password'] == '123456') {
-                    $_SESSION['username'] = $_POST['email'];
+                    $_SESSION['username'] = $item;
                     header("location:../../view/admin/dashboard.php");
+                    // header("location:test.php");
                     die;
-                    // echo 'test';
-                    // die;
-                    // $_SESSION['admin'] = $_POST['email'];
                 } else {
-                    $_SESSION['username'] = $_POST['email'];
+                    $_SESSION['username'] = $item;
                     header("location:../../view/user/home.php");
                     die;
                 }
             } else {
-                header("location:../../view/user/login.php");
+                header("location:../../view/user/login.php?check=false");
                 echo "Không đúng tài khoản hoặc mật khẩu!";
             }
         } else {

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,9 +21,53 @@
     <!-- conatiner -->
     <div class="max-w-[1920px] mx-auto">
         <!-- header -->
-        <?php require './header.php';
-        echo headerRender();
-        ?>
+        <div class="max-w-[1280px] mx-auto flex justify-between py-8 items-center">
+            <a href="#">
+                <img src="../../img/logo.png" alt="">
+            </a>
+            <ul class="flex justify-between items-center gap-8">
+                <li><a class="text-[#5D5D5D] text-[18px] font-semibold hover:text-[#F26F21]" href="./home.php">Trang
+                        Chủ</a></li>
+                <li><a class="text-[#5D5D5D] text-[18px] font-semibold hover:text-[#F26F21]" href="./products.php">Sản
+                        Phẩm</a></li>
+                <li><a class="text-[#5D5D5D] text-[18px] font-semibold hover:text-[#F26F21]" href="#">Về Chúng Tôi</a>
+                </li>
+                <li><a class="text-[#5D5D5D] text-[18px] font-semibold hover:text-[#F26F21]" href="#">Liên Hệ</a></li>
+            </ul>
+            <?php
+            if (isset($_SESSION['username'])) {
+            ?>
+            <div class="flex gap-3 items-center">
+                <div>
+                    <i class="fa-regular fa-bell"></i>
+                </div>
+                <p class="text-[#8D8D8D] text-[14px] font-[400] leading-[19px]">Xin chào, <span
+                        class="text-[#0066B2]"><?php echo $_SESSION['username']['userName'] ?></span></p>
+                <a href="#">
+                    <img class="w-[40px] h-[40px]" src="../../img/<?php echo $_SESSION['username']['avatar'] ?>" alt="">
+                </a>
+                <a href="../../controller/user/logout.php">
+                    <button
+                        class="border text-white text-[14px] font-[400] leading-[19px] rounded py-1 px-2 bg-blue-400 hover:opacity-90">Đăng
+                        xuất</button>
+                </a>
+            </div>
+            <?php } else { ?>
+            <div class="flex items-center gap-4">
+                <a href="./login.php">
+                    <button
+                        class="border border-[#0066B2] text-[#0066B2] bg-white px-3 py-1 rounded hover:bg-[#0066B2] hover:text-white">Đăng
+                        Nhập</button>
+                </a>
+                <a href="./register.php">
+                    <button
+                        class="border border-[#0066B2] text-[#0066B2] bg-white px-3 py-1 rounded hover:bg-[#0066B2] hover:text-white">Đăng
+                        Ký</button>
+                </a>
+            </div>
+            <?php } ?>
+
+        </div>
 
         <!-- main -->
         <?php require_once "../../model/connect.php";

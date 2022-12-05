@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +36,8 @@
                             href="./userManager.php"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý user</a>
                     </li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-brands fa-rocketchat"></i> Quản lý danh mục</a></li>
+                            href="categoryManager.php"><i class="mr-2 fa-brands fa-rocketchat"></i> Quản lý danh mục</a>
+                    </li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
                             href="#"><i class="mr-2 fa-regular fa-chart-bar"></i> Thống kê</a></li>
                 </ul>
@@ -41,14 +46,29 @@
         <!-- article -->
         <article class="flex-[1] px-8 py-5">
             <div class="flex justify-end gap-5 items-center">
+                <?php
+                if (isset($_SESSION['username'])) {
+                ?>
                 <div>
                     <i class="fa-regular fa-bell"></i>
                 </div>
                 <p class="text-[#8D8D8D] text-[14px] font-[400] leading-[19px]">Xin chào, <span
-                        class="text-[#0066B2]">Nguyễn Hường</span></p>
+                        class="text-[#0066B2]"><?php echo $_SESSION['username']['userName'] ?></span></p>
                 <a href="#">
-                    <img src="../../img/user.png" alt="">
+                    <img class="w-[40px] h-[40px]" src="../../img/<?php echo $_SESSION['username']['avatar'] ?>" alt="">
                 </a>
+                <a href="../../controller/user/logout.php">
+                    <button
+                        class="border text-white text-[14px] font-[400] leading-[19px] rounded py-1 px-2 bg-blue-400 hover:opacity-90">Đăng
+                        xuất</button>
+                </a>
+                <?php } else { ?>
+                <a href="../user/login.php">
+                    <button
+                        class="border text-white text-[14px] font-[400] leading-[19px] rounded py-1 px-2 bg-blue-400 hover:opacity-90">Đăng
+                        nhập</button>
+                </a>
+                <?php } ?>
             </div>
             <div class="mt-[56px] flex justify-center items-center h-[240px] rounded-2xl"
                 style="background-image: url(../../img/PM_banner.png);">
@@ -57,11 +77,12 @@
             <div class="flex justify-between items-center mt-10 mb-5">
                 <h3 class="text-[20px] font-bold leading-[27px]">Danh sách danh mục</h3>
                 <div class="flex gap-4 items-center">
-                    <form class="relative" action="">
-                        <input
+                    <form class="relative" action="categoryManager.php" method="GET">
+                        <input name="categorySearch"
                             class="outline-none border border-[#CBD5E0] focus:border-blue-600 h-[40px] w-[400px] rounded pl-8 placeholder:text-[16px] placeholder:text-[#CBD5E0] placeholder:font-normal"
                             type="text" placeholder="Aspen Weste">
-                        <i class="fa-solid fa-magnifying-glass absolute text-blue-600 top-3 left-[10px] z-10"></i>
+                        <button type="submit"><i
+                                class="fa-solid fa-magnifying-glass absolute text-blue-600 top-3 left-[10px] z-10"></i></button>
                         </input>
                     </form>
                     <a href="./addNewCategory.php">
@@ -88,12 +109,17 @@
                             Action</th>
                     </tr>
                 </thead>
-                <?php require_once "../../model/connect.php";
-                $query = "SELECT * FROM categories";
-                $categories = getAll($query);
+
+                <?php
+
                 ?>
                 <tbody>
-                    <?php foreach ($categories as $item) : ?>
+                    <?php require_once "../../model/connect.php";
+                    if (!isset($_GET['categorySearch'])) {
+                        $query = "SELECT * FROM categories";
+                        $categories = getAll($query);
+                        foreach ($categories as $item) :
+                    ?>
                     <tr>
                         <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B] w-[100px]">
                             <?php echo $item['categoryId']; ?>
@@ -112,7 +138,33 @@
                             </a>
                         </td>
                     </tr>
-                    <?php endforeach ?>
+                    <?php endforeach;
+                    } else {
+                        $search = $_GET['categorySearch'];
+                        $query = "SELECT * FROM categories WHERE categoryName LIKE '%$search%'";
+                        $categories = getAll($query);
+                        foreach ($categories as $item) {
+                        ?>
+                    <tr>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B] w-[100px]">
+                            <?php echo $item['categoryId']; ?>
+                        </td>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <?php echo $item['categoryName']; ?></td>
+                        <td class="w-[40%] text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <a href="./updateCategory.php?id=<?php echo $item['categoryId'] ?>">
+                                <button
+                                    class="text-[14px] text-white font-[400] bg-[#1E74A4] rounded h-[30px] w-[70px] hover:opacity-90">Update</button>
+                            </a>
+                            <a onclick="return confirm('Are you sure?')"
+                                href="../../controller/admin/deleteCategory.php?id=<?php echo $item['categoryId'] ?>">
+                                <button
+                                    class="text-[14px] text-white font-[400] bg-[#AC3131] rounded h-[30px] w-[70px] hover:opacity-90">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php }
+                    } ?>
                 </tbody>
             </table>
         </article>

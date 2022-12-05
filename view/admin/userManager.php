@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +33,8 @@
                             href="./productManager.php"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý sản
                             phẩm</a></li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý user</a></li>
+                            href="userManager.php"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý user</a>
+                    </li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
                             href="./categoryManager.php"><i class="mr-2 fa-brands fa-rocketchat"></i> Quản lý danh
                             mục</a></li>
@@ -41,14 +46,29 @@
         <!-- article -->
         <article class="flex-[1] px-8 py-5">
             <div class="flex justify-end gap-5 items-center">
+                <?php
+                if (isset($_SESSION['username'])) {
+                ?>
                 <div>
                     <i class="fa-regular fa-bell"></i>
                 </div>
                 <p class="text-[#8D8D8D] text-[14px] font-[400] leading-[19px]">Xin chào, <span
-                        class="text-[#0066B2]">Nguyễn Hường</span></p>
+                        class="text-[#0066B2]"><?php echo $_SESSION['username']['userName'] ?></span></p>
                 <a href="#">
-                    <img src="../../img/user.png" alt="">
+                    <img class="w-[40px] h-[40px]" src="../../img/<?php echo $_SESSION['username']['avatar'] ?>" alt="">
                 </a>
+                <a href="../../controller/user/logout.php">
+                    <button
+                        class="border text-white text-[14px] font-[400] leading-[19px] rounded py-1 px-2 bg-blue-400 hover:opacity-90">Đăng
+                        xuất</button>
+                </a>
+                <?php } else { ?>
+                <a href="../user/login.php">
+                    <button
+                        class="border text-white text-[14px] font-[400] leading-[19px] rounded py-1 px-2 bg-blue-400 hover:opacity-90">Đăng
+                        nhập</button>
+                </a>
+                <?php } ?>
             </div>
             <div class="mt-[56px] flex justify-center items-center h-[240px] rounded-2xl"
                 style="background-image: url(../../img/PM_banner.png);">
@@ -57,11 +77,12 @@
             <div class="flex justify-between items-center mt-10 mb-5">
                 <h3 class="text-[20px] font-bold leading-[27px]">Danh sách user</h3>
                 <div class="flex gap-4 items-center">
-                    <form class="relative" action="">
-                        <input
+                    <form class="relative" action="userManager.php" method="GET">
+                        <input name="userSearch"
                             class="outline-none border border-[#CBD5E0] focus:border-blue-600 h-[40px] w-[400px] rounded pl-8 placeholder:text-[16px] placeholder:text-[#CBD5E0] placeholder:font-normal"
                             type="text" placeholder="Aspen Weste">
-                        <i class="fa-solid fa-magnifying-glass absolute text-blue-600 top-3 left-[10px] z-10"></i>
+                        <button type="submit"><i
+                                class="fa-solid fa-magnifying-glass absolute text-blue-600 top-3 left-[10px] z-10"></i></button>
                         </input>
                     </form>
                     <a href="./addNewUser.php">
@@ -96,10 +117,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php require_once "../../model/connect.php";
-                    $query = "SELECT * FROM users";
-                    $users = getAll($query);
-                    foreach ($users as $item) :
+                    <?php require_once "../../model/connect.php"; ?>
+                    <?php if (!isset($_GET['userSearch'])) {
+                        $query = "SELECT * FROM users";
+                        $users = getAll($query);
+                        foreach ($users as $item) :
                     ?>
                     <tr>
                         <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B] w-[100px]">
@@ -128,7 +150,43 @@
                             </a>
                         </td>
                     </tr>
-                    <?php endforeach ?>
+                    <?php endforeach;
+                    } else {
+                        $userSearch = $_GET['userSearch'];
+                        $query = "SELECT * FROM users WHERE userName LIKE '%$userSearch%'";
+                        $users = getAll($query);
+                        foreach ($users as $item) :
+                        ?>
+                    <tr>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B] w-[100px]">
+                            <?php echo $item['id'] ?>
+                        </td>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <?php echo $item['userName'] ?></td>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <img class="w-[100px] h-[100px] ml-[50%] translate-x-[-50%]"
+                                src="../../img/<?php echo $item['avatar'] ?>" alt="">
+                        </td>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <?php echo $item['password'] ?></td>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <?php echo $item['email'] ?>
+                        </td>
+                        <td class="text-center border py-4 px-3 text-[14px] font-[400] border-[#5B5B5B]">
+                            <a href="./updateUser.php?id=<?php echo $item['id'] ?>">
+                                <button
+                                    class="text-[14px] text-white font-[400] bg-[#1E74A4] rounded h-[30px] w-[70px] hover:opacity-90">Update</button>
+                            </a>
+                            <a onclick="return confirm('Are you sure?')"
+                                href="../../controller/admin/deleteUser.php?id=<?php echo $item['id'] ?>">
+                                <button
+                                    class="text-[14px] text-white font-[400] bg-[#AC3131] rounded h-[30px] w-[70px] hover:opacity-90">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach;
+                    } ?>
+
                 </tbody>
             </table>
         </article>

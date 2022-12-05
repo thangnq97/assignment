@@ -28,7 +28,8 @@
                 </div>
                 <div class="flex-[1]">
                     <h2 class="text-center text-[#37A9CD] font-bold text-[30px] leading-[36px]">Đăng nhập</h2>
-                    <form class="mt-6 mb-8" method="POST" action="../../controller/user/login.php">
+                    <form class="mt-6 mb-8" method="POST" action="../../controller/user/login.php"
+                        onsubmit="return check()">
                         <div class="mb-2">
                             <label class="form-label text-[#4A5568] font-normal text-[16px] mb-3">Email</label>
                             <input type="email" name="email"
@@ -41,6 +42,9 @@
                                 class="border border-[#37A9CD] rounded w-full h-[50px] outline-none pl-4"
                                 placeholder="*********">
                         </div>
+                        <?php if (isset($_GET['check'])) {
+                            echo "<p class='mb-3 text-red-500'>Sai tên đăng nhập hoặc mật khẩu</p>";
+                        } ?>
                         <button type="submit" name="login"
                             class="w-full h-[50px] bg-[#37A9CD] rounded text-white font-bold text-[16px] hover:bg-[#4fcdf3] mb-4">Đăng
                             nhập
@@ -56,14 +60,15 @@
                         <a href="#">
                             <p class="text-[#37A9CD] font-normal text-[14px] mb-4">Quên mật khẩu?</p>
                         </a>
-                        <p class="text-[#616161] font-normal text-[16px]">Bạn chưa có tài khoản? <a href="#"><span
-                                    class="text-[#37A9CD]">Đăng ký ngay</span></a></p>
+                        <p class="text-[#616161] font-normal text-[16px]">Bạn chưa có tài khoản? <a
+                                href="./register.php"><span class="text-[#37A9CD]">Đăng ký ngay</span></a></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="../js/login.js"></script>
 </body>
 
 </html>

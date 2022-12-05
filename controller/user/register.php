@@ -11,5 +11,5 @@ if (isset($_POST['register'])) {
     $query = "INSERT INTO users (userName, email, avatar, password) VALUES ('$username', '$email', '$avatar', '$avatarpassword')";
     move_uploaded_file($_FILES['avatar']['tmp_name'], '../../img/' . $_FILES['avatar']['name']);
     connect($query);
-    header("location:../../view/user/home.php");
+    header("location:login.php");
 }

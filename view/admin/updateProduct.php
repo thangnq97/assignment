@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,13 +28,16 @@
             <nav>
                 <ul class="flex flex-col gap-4 mt-[52px]">
                     <li><a class="block px-5 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-solid fa-table-columns"></i> Dashboard</a></li>
+                            href="./dashboard.php"><i class="mr-2 fa-solid fa-table-columns"></i> Dashboard</a></li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý sản phẩm</a></li>
+                            href="./productManager.php"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý sản
+                            phẩm</a></li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý user</a></li>
+                            href="./userManager.php"><i class="mr-2 fa-sharp fa-solid fa-laptop"></i> Quản lý user</a>
+                    </li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
-                            href="#"><i class="mr-2 fa-brands fa-rocketchat"></i> Quản lý danh mục</a></li>
+                            href="./categoryManager.php"><i class="mr-2 fa-brands fa-rocketchat"></i> Quản lý danh
+                            mục</a></li>
                     <li><a class="block px-4 py-3 text-[#000000] hover:text-[#4A4A4A] hover:bg-orange-500 rounded font-[400] text-[16px] leading-[21px]"
                             href="#"><i class="mr-2 fa-regular fa-chart-bar"></i> Thống kê</a></li>
                 </ul>
@@ -39,14 +46,29 @@
         <!-- article -->
         <article class="flex-[1] px-8 py-5">
             <div class="flex justify-end gap-5 items-center">
+                <?php
+                if (isset($_SESSION['username'])) {
+                ?>
                 <div>
                     <i class="fa-regular fa-bell"></i>
                 </div>
                 <p class="text-[#8D8D8D] text-[14px] font-[400] leading-[19px]">Xin chào, <span
-                        class="text-[#0066B2]">Nguyễn Hường</span></p>
+                        class="text-[#0066B2]"><?php echo $_SESSION['username']['userName'] ?></span></p>
                 <a href="#">
-                    <img src="../../img/user.png" alt="">
+                    <img class="w-[40px] h-[40px]" src="../../img/<?php echo $_SESSION['username']['avatar'] ?>" alt="">
                 </a>
+                <a href="../../controller/user/logout.php">
+                    <button
+                        class="border text-white text-[14px] font-[400] leading-[19px] rounded py-1 px-2 bg-blue-400 hover:opacity-90">Đăng
+                        xuất</button>
+                </a>
+                <?php } else { ?>
+                <a href="../user/login.php">
+                    <button
+                        class="border text-white text-[14px] font-[400] leading-[19px] rounded py-1 px-2 bg-blue-400 hover:opacity-90">Đăng
+                        nhập</button>
+                </a>
+                <?php } ?>
             </div>
             <div class="max-w-[900px] flex flex-col items-center mt-10">
                 <h2 class="font-bold text-[32px] mb-8">Cập nhật sản phẩm</h2>

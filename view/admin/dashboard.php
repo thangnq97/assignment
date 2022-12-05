@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,14 +46,29 @@
         <!-- article -->
         <article class="flex-[1] px-8 py-5">
             <div class="flex justify-end gap-5 items-center">
+                <?php
+                if (isset($_SESSION['username'])) {
+                ?>
                 <div>
                     <i class="fa-regular fa-bell"></i>
                 </div>
                 <p class="text-[#8D8D8D] text-[14px] font-[400] leading-[19px]">Xin chào, <span
-                        class="text-[#0066B2]">Nguyễn Hường</span></p>
+                        class="text-[#0066B2]"><?php echo $_SESSION['username']['userName'] ?></span></p>
                 <a href="#">
-                    <img src="../../img/user.png" alt="">
+                    <img class="w-[40px] h-[40px]" src="../../img/<?php echo $_SESSION['username']['avatar'] ?>" alt="">
                 </a>
+                <a href="../../controller/user/logout.php">
+                    <button
+                        class="border text-white text-[14px] font-[400] leading-[19px] rounded py-1 px-2 bg-blue-400 hover:opacity-90">Đăng
+                        xuất</button>
+                </a>
+                <?php } else { ?>
+                <a href="../user/login.php">
+                    <button
+                        class="border text-white text-[14px] font-[400] leading-[19px] rounded py-1 px-2 bg-blue-400 hover:opacity-90">Đăng
+                        nhập</button>
+                </a>
+                <?php } ?>
             </div>
             <div class="mt-[56px] flex justify-center items-center h-[240px] rounded-2xl"
                 style="background-image: url(../../img/dashboard_banner.png);">
