@@ -119,11 +119,12 @@ session_start();
                         <select class="focus:border-blue-500 outline-none border border-[#CED4DA] rounded"
                             name="categoryId" id="">
                             <?php
+                            $id = $product['categoryId'];
                             $query = "SELECT * FROM categories";
                             $categories = getAll($query);
                             foreach ($categories as $item) :
                             ?>
-                            <option value="<?php echo $item['categoryId'] ?>" <?php if ($item['categoryId']) : ?>
+                            <option value="<?php echo $item['categoryId'] ?>" <?php if ($item['categoryId'] == $id) : ?>
                                 selected <?php endif ?>>
                                 <?php echo $item['categoryName'] ?>
                             </option>
